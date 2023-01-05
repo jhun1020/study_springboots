@@ -15,7 +15,7 @@
       <div>
         <div>Main !</div>
         <div>Board</div>
-        <div> <a href ="/board/form">board/form</a> </div>
+        <div> <a href ="/board/form">board/form  Homecontroller main()</a> </div>
       </div>
     </form>
   </body>

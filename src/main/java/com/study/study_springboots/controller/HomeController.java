@@ -40,10 +40,10 @@ public class HomeController {
 
     // 매핑은 하나가 아닌 여러개도 가능
     // 아무 것도 안적으면 root
-    @RequestMapping(value= {"", "/", "/main"})
-    public String main(){
-        int i = 0;
-        return "WEB-INF/views/main.jsp";
-    }
+    // @RequestMapping(value= {"", "/", "/main"})
+    // public String main(){
+    //     int i = 0;
+    //     return "WEB-INF/views/main.jsp";
+    // }
 
 }

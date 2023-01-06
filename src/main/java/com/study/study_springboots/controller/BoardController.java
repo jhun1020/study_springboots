@@ -6,6 +6,12 @@
 // @Controller
 // public class BoardController {
     
+        // /WEB-INF/views/ 이부분과 .jsp 부분이 항상 일치함
+        // 이런 부분을 미리 세팅 = ViewResolver가 하는 일.
+        //  ==> application.prooerties 확인해보면 거기에 적었음
+        // 이렇게 환경을 조정하면 서버를 껐다 켜는데 좋음.
+    }
+
 //     @RequestMapping(value="/board/form", method = RequestMethod.GET)
 //     public String form(){
 //         return "/WEB-INF/views/board/form.jsp";

@@ -15,7 +15,7 @@ public class HomeController {
         // 리턴에 아무것도 없이 스트링만 입력하면 경로로 인식 
             // 리턴이 없을 때는 에러페이지 발생  => 리턴 추가
         // 리턴이니까 보이드가 아니게 되어서 자료형 void -> string 로 변경
-        return "WEB-INF/views/home.jsp";
+        return "/home";
 
     }
 
@@ -23,7 +23,7 @@ public class HomeController {
 
     public String homehtml(){
         int i = 0;
-        return "WEB-INF/views/home.html";
+        return "/home.html";
         // 404 에러페이지 발생 => html은 그 파일이 해당 경로에 있어도 해석하지 않음
         // html사용하고 싶다면 resources의  static에 넣어서 사용하면 되지만 그런 경우가 거의 없음.
         
@@ -40,10 +40,10 @@ public class HomeController {
 
     // 매핑은 하나가 아닌 여러개도 가능
     // 아무 것도 안적으면 root
-    // @RequestMapping(value= {"", "/", "/main"})
-    // public String main(){
-    //     int i = 0;
-    //     return "WEB-INF/views/main.jsp";
-    // }
+    @RequestMapping(value = {"", "/", "/main"})    // http://localhost:8080/homejsp
+    public String main(){
+        int i = 0;
+        return "main";
+    }
 
 }

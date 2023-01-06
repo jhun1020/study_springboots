@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,18 +19,19 @@
     <hr>
       <div class="m-2">
         <nav class="nav d-flex justify-content-around fs-4">
-          <form action="/board/view">
+          <form action="/board_our/view">
             <button class="nav-link text-dark border-0 bg-white">view</button>
           </form>
-          <form action="/board/form">
+          <form action="/board_our/form">
             <button class="nav-link text-dark border-0 bg-white fs-4">form</button>
           </form>
-          <form action="/board/edit">
+          <form action="/board_our/edit">
             <button class="nav-link text-dark border-0 bg-white fs-4">edit</button>
           </form>
         </nav>
       </div>
       <hr>
+
     </div>
 
     <script
@@ -39,4 +40,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html> --%>

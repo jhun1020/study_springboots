@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +18,7 @@
     <div class="text-center fs-3 m-5">board/form</div>
 
     <div class="container">
-      <form action="/board/form" method="post">
+      <form action="/board_our/our_form" method="post">
         <div class="mt-3">
           <label for="title" class>title</label>
           <input type="text " class="form-control" name="title" id="title" />
@@ -49,7 +49,7 @@
       </form>
       <hr>
       <div class="mt-5">
-        <form action="/board">
+        <form action="/board_our">
           <button class="border-0 bg-warning bg-opacity-25 fs-5 rounded-pill">
             list
            </button>
@@ -63,4 +63,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html> --%>

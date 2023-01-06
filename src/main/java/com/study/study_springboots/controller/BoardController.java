@@ -34,16 +34,6 @@ public class BoardController {
         return "/WEB-INF/views/board/view.jsp";
     }
 
-    @RequestMapping(value="/board/menu2", method = RequestMethod.GET)
-    public String menu2Get(){
-        return "/WEB-INF/views/board/menu2.jsp";
-    }
-// 메뉴2는 post만 만들어서 여기로만 들어옴
-    @RequestMapping(value="/board/menu2", method = RequestMethod.POST)
-    public String menu2Post(){
-        return "/WEB-INF/views/board/menu2.jsp";
-    }
-
     @RequestMapping(value="/board/edit", method = RequestMethod.GET)
     public String editGet(){
         return "/WEB-INF/views/board/edit.jsp";

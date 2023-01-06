@@ -17,8 +17,9 @@ public class BoardController {
         return "/WEB-INF/views/board/form.jsp";
     }
     
+    // get, post 명시 안하면 둘 다 
     @RequestMapping(value= {"/board", "/board/list"})
-    public String list(){
+    public String listGet(){
         return "/WEB-INF/views/board/list.jsp";
     }
 
@@ -27,18 +28,17 @@ public class BoardController {
     public String viewGet(){
         return "/WEB-INF/views/board/view.jsp";
     }
-    
     @RequestMapping(value="/board/view", method = RequestMethod.POST)
     public String viewPost(){
   
         return "/WEB-INF/views/board/view.jsp";
     }
 
+
     @RequestMapping(value="/board/edit", method = RequestMethod.GET)
     public String editGet(){
         return "/WEB-INF/views/board/edit.jsp";
     }
-
     @RequestMapping(value="/board/edit", method = RequestMethod.POST)
     public String editPost(){
         return "/WEB-INF/views/board/edit.jsp";

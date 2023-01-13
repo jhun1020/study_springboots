@@ -1,3 +1,5 @@
+<%-- <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +14,20 @@
 
 <body>
     <div class="container">
+    ${boardBean}
         <table class="table">
             <thead>
                 <tr>
                     <th class="col-1" scope=>Title</th>
-                    <td class="col-6">Hello</td>
-                    <th>user name</th>
-                    <td>Mark</td>
+                    <td class="col-6">Hello : ${boardBean.title}</td>
+                    <th>user name </th>
+                    <td>Mark : ${boardBean.userName}</td>
                     <th>date</th>
                     <td>22.11.11</td>
                 </tr>
             </thead>
             <tbody>
-                <td colspan=6>content</td>
+                <td colspan=6> ${boardBean.content}</td>
             </tbody>
         </table>
         <div>
@@ -41,4 +44,4 @@
         crossorigin="anonymous"></script>
 </body>
 
-</html>
+</html> --%>

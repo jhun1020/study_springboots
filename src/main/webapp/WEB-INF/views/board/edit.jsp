@@ -1,4 +1,5 @@
-<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +18,7 @@
     <div class="text-center fs-3 m-5">board/edit</div>
     <div class="container m-3">
       <div class="container m-3">
-        <form action="/board_our/edit" method="post">
+        <form action="/board/edit" method="post">
           <div>
             <label for="title">title : </label>
             <input
@@ -62,7 +63,7 @@
 
       <hr />
   
-        <form action="/board_our">
+        <form action="/board/list">
           <button class="border-0 bg-warning bg-opacity-25 fs-5 rounded-pill mt-3">
             list
           </button>
@@ -75,4 +76,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html> --%>
+</html>

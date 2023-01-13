@@ -1,11 +1,11 @@
-<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <title>Document</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -18,7 +18,7 @@
     <div class="text-center fs-3 m-5">board/form</div>
 
     <div class="container">
-      <form action="/board_our/our_form" method="post">
+      <form action="/board/form" method="post">
         <div class="mt-3">
           <label for="title" class>title</label>
           <input type="text " class="form-control" name="title" id="title" />
@@ -49,7 +49,7 @@
       </form>
       <hr>
       <div class="mt-5">
-        <form action="/board_our">
+        <form action="/board">
           <button class="border-0 bg-warning bg-opacity-25 fs-5 rounded-pill">
             list
            </button>
@@ -63,4 +63,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html> --%>
+</html>

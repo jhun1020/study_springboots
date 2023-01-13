@@ -1,4 +1,5 @@
-<%-- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,15 +20,39 @@
       <table class="table">
         <tr>
           <th>title</th>
-          <td>타이틀</td>
+          <td>
+          <%-- for문 --%>
+          <c:forEach items="${boardList}" var="board" varStatus="status">
+            <%-- if문 --%>
+            <c:if test="${board.title eq paramTitle}">
+             ${board.title}
+            </c:if>
+            </c:forEach>
+          </td>
         </tr>
         <tr>
           <th>content</th>
-          <td>내용</td>
+          <td>
+           <c:forEach items="${boardList}" var="board" varStatus="status">
+          
+            <c:if test="${board.title eq paramTitle}">
+             ${board.content}
+            </c:if>
+
+
+            </c:forEach>
+          </td>
         </tr>
         <tr>
           <th>userName</th>
-          <td>이정훈</td>
+          <td>
+           <c:forEach items="${boardList}" var="board" varStatus="status">
+            <%-- if문 --%>
+            <c:if test="${board.title eq paramTitle}">
+             ${board.userName}
+            </c:if>
+            </c:forEach>
+          </td>
         </tr>
         <tr>
           <th>date</th>
@@ -59,4 +84,4 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html> --%>
+</html>

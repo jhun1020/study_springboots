@@ -14,29 +14,27 @@
 
 <body>
     <div class="container">
-    ${boardBean}
-        <table class="table">
+            <table class="table">
             <thead>
                 <tr>
-                    <th class="col-1" scope=>Title</th>
-                    <td class="col-6">Hello : ${boardBean.title}</td>
+                    <th>Title</th>
                     <th>user name </th>
-                    <td>Mark : ${boardBean.userName}</td>
+                    <th>content </th>
                     <th>date</th>
-                    <td>22.11.11</td>
                 </tr>
             </thead>
             <tbody>
-                <td colspan=6> ${boardBean.content}</td>
+                <td> ${params.title} </td>
+                <td> ${params.get("userName")}</td>
+                <td> ${params.get("content")} </td>
+                <td> ${params.get("date")} </td>
             </tbody>
         </table>
         <div>
-            <form action="/board_our/list">
+            <form action="/notice/list">
                 <button>go list</button>
             </form>
-            <form action="/board_our/edit" method="post">
-                <button>edit</button>
-            </form>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

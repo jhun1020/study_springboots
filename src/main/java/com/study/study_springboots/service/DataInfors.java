@@ -6,6 +6,17 @@ import java.util.HashMap;
 import com.study.study_springboots.bean.BoardBean;
 
 public class DataInfors {
+
+    public HashMap<String, String> getDatabyUid(String action_uid){
+        HashMap<String, String> dataUid = new HashMap<String, String>();
+        dataUid.put("title", action_uid);
+        // list에서 받아온 uid값을 여기서 map에 추가 
+
+        return dataUid;
+        
+    }
+
+
     public HashMap<String, String> getSearchFormData() {
         // 리턴을 키와 value로 리턴한다 ==>  hashmap사용
         HashMap<String, String> searchForm = new HashMap<String, String>();
@@ -103,5 +114,21 @@ bundlesData.put("dataListWithBoardBean", DataInfors.getDataListWithBoardBean());
         return membersList;
     }
 
+    public ArrayList<BoardBean> getTitle(String title){
+        ArrayList<BoardBean> memberInfo = new ArrayList<>();
+        DataInfors dataInfors = new DataInfors();
+        // 멤버 인포리스트라는 리스트를 만들고 보드리스트를 불러와서 
+        // 받아온 값인 title과 비교 만약에 title과 같다면 memberInfoList에 담아서 리턴
+        
+        ArrayList<BoardBean> boardList = dataInfors.getDataListWithBoardBeadMyself();
+        for(BoardBean board : boardList) {
 
+            if(board.getTitle().equals(title)) {
+                memberInfo.add(board);
+            }
+            
+        }
+        return memberInfo;
+        // 여기에는 title에 담겨온 값과 비교해서 같은 boardList의 정보가 담겨서 돌아감
+    }
 }

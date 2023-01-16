@@ -1,7 +1,7 @@
 package com.study.study_springboots.bean;
 
 public class BoardBean {    // vo, dao, dto
-    private String title;
+    public String title;
     private String content;
     private String userName;
     private String date;

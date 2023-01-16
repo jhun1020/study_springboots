@@ -1,4 +1,4 @@
-<%-- <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -75,7 +75,8 @@
             <thead>
                 <tr>
                     <th scope=>#</th>
-                    <th scope=class="col-9">Title</th>
+                    <th scope=class="">Title</th>
+                    <th scope=class="">Title with Path</th>
                     <th scope=>user name</th>
                     <th scope=>date</th>
                 </tr>
@@ -85,18 +86,21 @@
                 <%-- view로 넘어가는 서블렛(컨트롤러)의 파라미터에 @RequestParam String uid 추가해야 하낟. --%>
                     <th scope=>1</th>
                     <td><a href="/board_our/view?uid=Hello">Hello</a></td>
+                    <td><a href="/board_our/view/Hello">Hello</a></td>
                     <td>Mark</td>
                     <td>22.11.11</td>
                 </tr>
                 <tr>
                     <th scope=>2</th>
                     <td><a href="/board_our/view?uid=Otto">Otto</a></td>
+                    <td><a href="/board_our/view/Otto">Otto</a></td>
                     <td>Mark</td>
                     <td>22.11.11</td>
                 </tr>
                 <tr>
                     <th scope=>3</th>
                     <td><a href="/board_our/view?uid=Jasco">Jasco</a></td>
+                    <td><a href="/board_our/view/Jasco">Jasco</a></td>
                     <td>Mark</td>
                     <td>22.11.11</td>
                 </tr>

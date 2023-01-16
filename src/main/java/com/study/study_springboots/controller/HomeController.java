@@ -46,4 +46,10 @@ public class HomeController {
         return "main";
     }
 
+    @RequestMapping(value= "/jstlformats")
+    public String jstlformats(){
+        int i = 0;
+        return "jstl_formats";
+    }
+
 }

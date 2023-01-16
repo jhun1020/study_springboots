@@ -21,13 +21,14 @@
         <tr>
           <th>title</th>
           <td>
+          ${paramTitle}
           <%-- for문 --%>
-          <c:forEach items="${boardList}" var="board" varStatus="status">
+          <%-- <c:forEach items="${boardList}" var="board" varStatus="status"> --%>
             <%-- if문 --%>
-            <c:if test="${board.title eq paramTitle}">
+            <%-- <c:if test="${board.title eq paramTitle}">
              ${board.title}
             </c:if>
-            </c:forEach>
+            </c:forEach> --%>
           </td>
         </tr>
         <tr>

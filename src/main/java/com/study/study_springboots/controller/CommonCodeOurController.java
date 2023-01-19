@@ -20,7 +20,8 @@ public class CommonCodeOurController {
 
     @RequestMapping(value={"/update"}, method = RequestMethod.POST)
     public ModelAndView update(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
-        commonCodeOurService.update(params);
+        Object resultMap = commonCodeOurService.updateAndGetList(params);
+        modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("commonCode_our/list");  // 업데이트가 되면 list로 이동
         return modelAndView; //디버깅모드에서 보면 resultMap에 key value형식으로 값들이 들어와있는것을 확인
 
@@ -48,7 +49,7 @@ public class CommonCodeOurController {
     public ModelAndView delete(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView){
         params.put("COMMON_CODE_ID", uniqueId); 
         Object resultMap = commonCodeOurService.deleteAndGetList(params);
-        modelAndView.addObject(resultMap);
+        modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("commonCode_our/list"); //딜리트 된 후에 list로 가도록
         return modelAndView; 
     }   
@@ -62,7 +63,8 @@ public class CommonCodeOurController {
 
     @RequestMapping(value={"/insert"}, method = RequestMethod.POST)
     public ModelAndView insert(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
-        commonCodeOurService.insert(params);
+        Object resultMap = commonCodeOurService.insertAndGetList(params);
+        modelAndView.addObject(resultMap);
         modelAndView.setViewName("commonCode_our/list");  
         return modelAndView; 
 

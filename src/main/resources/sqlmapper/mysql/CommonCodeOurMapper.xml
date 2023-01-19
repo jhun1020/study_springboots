@@ -34,33 +34,30 @@
     </delete>
 
     <!-- insert / call CommonCodeOur.insertWithUID-->
-    <insert id="insertWithUID" parameterType="Map">
-    INSERT INTO CIP_COMMON_CODE 
+   <insert id="insertWithUID" parameterType="Map">
+    insert into CIP_COMMON_CODE 
         (COMMON_CODE_ID,NAME,ORDER_NUMBER,ATTRIBUTION_1,ATTRIBUTION_2,DESCRIPTION,
         SYSTEM_CODE_YN,USE_YN,PARENT_COMMON_CODE_ID,REGISTER_SEQ,REGISTRY_DATE,MODIFIER_SEQ,MODIFY_DATE) 
-    VALUE('#{COMMON_CODE_ID}','#{NAME}',#{ORDER_NUMBER},NULL,NULL,'#{DESCRIPTION}',
+    VALUE (#{COMMON_CODE_ID},#{NAME},#{ORDER_NUMBER},NULL,NULL,#{DESCRIPTION}
         <choose>
-        <!-- jstl은 c: 가 붙는데 이건 mybatis가 지원하는 코드라 형식은 똑같지만 c:가 안들어감 -->
-            <!-- SYSTEM_CODE_YN이 값이 없다면  -->
-            <when test="SYSTEM_CODE_YN != null"> 
+            <when test="SYSTEM_CODE_YN != null">
                 , 'Yes'
             </when>
             <otherwise>
-                , 'No'
+                ,'No'
             </otherwise>
         </choose>
-                <choose>
-        <!-- jstl은 c: 가 붙는데 이건 mybatis가 지원하는 코드라 형식은 똑같지만 c:가 안들어감 -->
-            <!-- SYSTEM_CODE_YN이 값이 없다면  -->
-            <when test="USE_YN != null"> 
+        <choose>
+            <when test="USE_YN != null">
                 , 'Yes'
             </when>
             <otherwise>
-                , 'No'
+                ,'No'
             </otherwise>
         </choose>
         ,NULL,#{REGISTER_SEQ},sysdate(),#{MODIFIER_SEQ},sysdate())
     </insert>
+
 
 </mapper>
 

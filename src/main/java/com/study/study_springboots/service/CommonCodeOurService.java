@@ -48,4 +48,16 @@ public class CommonCodeOurService {
         // delete를 하고 나서 list를 리턴해주는 일.  이게 service의 역할
         // 컨트롤러에선 이 func만 호출하면 된다.
     }
+
+    public Object updateAndGetList(Object dataMap){
+        Object result = this.update(dataMap);
+        result = this.getList(dataMap);
+        return result;
+    }
+
+    public Object insertAndGetList(Object dataMap){
+        Object result = this.insert(dataMap);
+        result = this.getList(dataMap);
+        return result;
+    }
 }

@@ -3,6 +3,7 @@ package com.study.study_springboots.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,10 @@ import com.study.study_springboots.service.DataInfors;
 @Controller
 @RequestMapping(value = "/board_our")
 public class BoardOurController {
+
+    @Autowired  //beans에 올려둔 것을 사용한다는 의미
+    DataInfors dataInfors;  // IOC는 beans에 등록해뒀으니까 new 안해도됨.
+                    // ==> dataInfors 선언한거 다 지워도 됨
     @RequestMapping(value = "/edit", method = RequestMethod.POST)  
     public String edit() {
         return "board_our/edit";
@@ -48,7 +53,7 @@ public class BoardOurController {
         modelAndView.addObject("firstString", "firstValue");
         // request.setAttirbute("ket", value)랑 똑같은거같다.
 
-        DataInfors dataInfors = new DataInfors();
+        // DataInfors dataInfors = new DataInfors();  // IOC때문에 이제 없어도 되니 주석처리
         ArrayList<BoardBean> boardList = dataInfors.getDataListWithBoardBean();
         modelAndView.addObject("boardList" ,boardList);
         return modelAndView;
@@ -67,7 +72,7 @@ public class BoardOurController {
     @RequestMapping(value = "/view/{action_uid}", method = RequestMethod.GET) 
     // public ModelAndView view(ModelAndView modelAndView) {
         public ModelAndView view(@PathVariable String action_uid, ModelAndView modelAndView) {
-        DataInfors dataInfors = new DataInfors();
+        // DataInfors dataInfors = new DataInfors();  // IOC때문에 이제 없어도 되니 주석처리
         BoardBean boardBean = dataInfors.getDataWithBoardBean();
         // breakpoint를 return에 걸고 debug에서 값 확인   여기까진 model에 값 들어가지 않음
         modelAndView.addObject("boardBean" ,boardBean);

@@ -1,10 +1,21 @@
 package com.study.study_springboots.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.study.study_springboots.dao.HomeDao;
+
 @Controller
 public class HomeController {
+          // 2023 01 17   홈컨트롤러 호출할 때 
+          @Autowired
+          HomeDao homeDao;
+          // autowired를 넣지 않는다면 HomeDao homeDao = new HomeDao();와 같은데 
+          //new는 인스턴스화 하는 것이고 bean에 이미 인스턴스화되어 올라가 있으므로 new할 필요가 없음
+
+
+
     // 웹 캡션을 클래스가 아닌 func에도 씌워줄 수 있음.
   
     @RequestMapping(value= "/homejsp")
@@ -32,7 +43,8 @@ public class HomeController {
     
     @RequestMapping(value= "/home")
     public void home(){
-        int i = 0;
+        Object result = homeDao.getList();
+        int i=0;
         // 이상태에선 에러가 날거임/
         // Check your ViewResolver setup!   jsp가 없어서 그렇다 함
     }

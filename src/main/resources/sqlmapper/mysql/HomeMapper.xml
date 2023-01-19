@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="Home">
+call을 Home.selectFromANSWERSByQUESTIONS_UID 로 호출 -->
+    <!-- <select id="selectFromANSWERSByQUESTIONS_UID" parameterType="String" resultType="Map"> -->
+    <!-- public <E> List<E> selectList(String statement, Object parameter) -->
+    <!-- HomeDao 의 selectList에서 selectList의 String statement 가 selectFromANSWERSByQUESTIONS_UID가 되고 
+    Object parameter는 parameterType의 String이 된다.  이걸 맞춰줘야 값을 받아올 수 있다. -->
+    <!-- 파라미터 타입을 스트링으로 하나만 전달하기 보다 object로 여러개 전달하는 경우가 많다.
+    그래서 parameterType을 String 보다는 Map을 주로 사용한다.resultType 도 주로 Map사용  
+        SELECT QUESTIONS_UID, EXAMPLE_UID   
+        FROM ANSWERS
+        WHERE QUESTIONS_UID = #{QUESTION_UID}
+    </select>
+</mapper> -->
+
+<mapper namespace="Home">
+<!-- call을 Home.selectFromANSWERSByQUESTIONS_UID 로 호출 -->
+    <select id="selectFromANSWERSByQUESTIONS_UID" parameterType="Map" resultType="Map">
+        SELECT QUESTIONS_UID, EXAMPLE_UID   
+        FROM ANSWERS
+        WHERE QUESTIONS_UID = #{QUESTION_UID}
+    </select>
+</mapper>

@@ -3,8 +3,12 @@ package com.study.study_springboots.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.springframework.stereotype.Service;
+
 import com.study.study_springboots.bean.BoardBean;
 
+// @service : IOC 첫 시작
+@Service
 public class DataInfors {
 
     public HashMap<String, String> getDatabyUid(String action_uid){

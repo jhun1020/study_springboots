@@ -5,9 +5,11 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 
 <div class="container">
-	<form action ="/commonCodeOur/form" method="get"> 
+<%-- 버튼을 누르면 form 으로 지정된 controller사용해 insert창으로 이동 --%>
+	<form action ="/toy/form" method="get"> 
 		<button class="btn btn-info"
-		>Form(Insert)</button>
+		>회원 추가</button>
+    
 	</form>
 
 <table class="table table-striped table-hover table-bordered">
@@ -61,7 +63,18 @@
         <td>
           ${resultData.EMAIL_AD}
 				</td>
-        
+        <td>
+        수정
+				</td>
+        <td>
+          <%-- 컨트롤러의 딜리트 펑션을 사용해 delete기능 수행 --%>
+          <form action ="/toy/delete/${resultData.USER_UID}" method="post"> 
+					<%-- action 주소에 uid를 담아 보냄 --%>
+					<button class="btn outline-info"
+						>Delete</button>
+					</form>
+				</td>
+
 			</tr>
 		</c:forEach>
 	</tbody>

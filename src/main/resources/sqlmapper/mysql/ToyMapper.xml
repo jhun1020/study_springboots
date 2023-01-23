@@ -9,4 +9,17 @@
         FROM userdata
         <!-- WHERE QUESTIONS_UID = #{QUESTION_UID} -->
     </select>
+
+    <!-- delete / call Toy.deleteByUID-->
+    <delete id="deleteByUID" parameterType="Map">
+        DELETE FROM USERDATA
+        WHERE USER_UID = #{USER_UID}
+        <!-- POST로 받아서 MAP에 PUT한 USER_UID값과 일치하는 DATA삭제 -->
+    </delete>
+
+    <!-- insert / call CommonCodeOur.insertWithUID-->
+   <insert id="insertWithUID" parameterType="Map">
+    INSERT INTO USERDATA (USER_UID, NAME, ID, PASSWORD, PHONE_NUMBER, BIRTHDAY, EMAIL, SMS_AD, EMAIL_AD)
+    VALUES ('U1', #{NAME}, #{ID},  #{PASSWORD},  #{PHONE_NUMBER}, #{BIRTHDAY}, #{EMAIL}, #{SMS_AD}, #{EMAIL_AD});
+    </insert>
 </mapper>

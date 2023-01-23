@@ -7,11 +7,26 @@ import org.springframework.stereotype.Component;
 @Component //bean에 등록
 public class ToyDao {
     
-    @Autowired
+    @Autowired  //MAPPER과 연결
     private SqlSessionTemplate sqlSessionTemplate;
 
     public Object getList(String sqlMapId, Object dateMap){
         Object result = sqlSessionTemplate.selectList(sqlMapId, dateMap);
+        return result;
+    }
+
+    public Object update(String sqlMapId, Object dataMap){
+        Object result = sqlSessionTemplate.update(sqlMapId, dataMap);
+        return result;
+    }
+    
+    public Object delete(String sqlMapId, Object dataMap){
+        Object result = sqlSessionTemplate.delete(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object insert(String sqlMapId, Object dataMap){
+        Object result = sqlSessionTemplate.insert(sqlMapId, dataMap);
         return result;
     }
 }

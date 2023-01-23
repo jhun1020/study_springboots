@@ -9,7 +9,7 @@
         FROM CIP_COMMON_CODE
     </select>
 
-<!-- call CommonCOdeOur.selectByUID-->
+<!-- call CommonCodeOur.selectByUID-->
     <select id="selectByUID"  
     parameterType="Map" resultType="Map">
         SELECT * 

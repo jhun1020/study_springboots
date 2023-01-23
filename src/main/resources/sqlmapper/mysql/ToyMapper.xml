@@ -20,6 +20,6 @@
     <!-- insert / call CommonCodeOur.insertWithUID-->
    <insert id="insertWithUID" parameterType="Map">
     INSERT INTO USERDATA (USER_UID, NAME, ID, PASSWORD, PHONE_NUMBER, BIRTHDAY, EMAIL, SMS_AD, EMAIL_AD)
-    VALUES ('U1', #{NAME}, #{ID},  #{PASSWORD},  #{PHONE_NUMBER}, #{BIRTHDAY}, #{EMAIL}, #{SMS_AD}, #{EMAIL_AD});
+    VALUES (#{USER_UID}, #{NAME}, #{ID},  #{PASSWORD},  #{PHONE_NUMBER}, #{BIRTHDAY}, #{EMAIL}, #{SMS_AD}, #{EMAIL_AD});
     </insert>
 </mapper>

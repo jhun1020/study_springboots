@@ -40,7 +40,6 @@ public class ToyController {
     public ModelAndView delete(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView){
         // POST로 받아온 값을 params에 user_uid로 지정해 put하고
         params.put("USER_UID", uniqueId); 
-        // Object resultMap = ToyService.deleteAndGetList(params);
         Object resultMap = toyService.deleteAndGetList(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("toy/list"); //딜리트 된 후에 list로 가도록
@@ -56,9 +55,9 @@ public class ToyController {
 
     @RequestMapping(value={"/insert"})
     public ModelAndView insert(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
-        Object resultMap = toyService.insert(params);
+        Object resultMap = toyService.insertAndGetList(params);
         modelAndView.addObject("resultMap", resultMap);
-        modelAndView.setViewName("toy/insert");
+        modelAndView.setViewName("toy/list");
         return modelAndView;
     }
 

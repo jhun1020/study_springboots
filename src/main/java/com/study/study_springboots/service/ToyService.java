@@ -28,7 +28,7 @@ public class ToyService {
     
     
     public Object insert(Object dataMap){
-        String sqlMapId = "toy.insertWithUID";
+        String sqlMapId = "Toy.insertWithUID";
         Object result = toyDao.insert(sqlMapId, dataMap);
         return result;
     }
@@ -40,5 +40,12 @@ public class ToyService {
         return result;
         // delete를 하고 나서 list를 리턴해주는 일.  이게 service의 역할
         // 컨트롤러에선 이 func만 호출하면 된다.
+    }
+
+    public Object insertAndGetList(Object dataMap){
+        Object result = this.insert(dataMap);
+        result = this.getList(dataMap);
+        return result;
+        // insert를 하고 나서 list를 리턴해주는 일. 
     }
 }

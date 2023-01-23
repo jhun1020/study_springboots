@@ -46,13 +46,29 @@ public class ToyController {
         return modelAndView; 
     }   
 
-    @RequestMapping(value={"/form"})
-    public ModelAndView form(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
+    // @RequestMapping(value="/form_update/{uniqueId}", method = RequestMethod.POST)
+    // public ModelAndView form_update(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView){
+      
+    //     String PostUID = uniqueId;
+    //     modelAndView.addObject("PostUID", PostUID);
+    //     modelAndView.setViewName("toy/update"); 
+    //     return modelAndView; 
+    // }   
+
+    @RequestMapping(value={"/form_update"})
+    public ModelAndView form_update(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
   
-        modelAndView.setViewName("toy/insert");
+        modelAndView.setViewName("toy/update");
         return modelAndView;
     }
 
+    @RequestMapping(value = { "/update" }, method = RequestMethod.POST)
+    public ModelAndView update(@RequestParam Map<String, Object> params, ModelAndView modelAndView) {
+        Object resultMap = toyService.updateAndGetList(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.setViewName("toy/list");
+        return modelAndView;  //업데이트가 되면 list로 이동
+    }
     @RequestMapping(value={"/insert"})
     public ModelAndView insert(@RequestParam Map<String, Object> params, ModelAndView modelAndView){
         Object resultMap = toyService.insertAndGetList(params);

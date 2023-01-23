@@ -33,6 +33,12 @@ public class ToyService {
         return result;
     }
 
+    public Object update(Object dataMap){
+        String sqlMapId = "Toy.updateByUID";
+        Object result = toyDao.update(sqlMapId, dataMap);
+        return result;
+    }
+
     // delete하고 list를 뱉어내는 func   
     public Object deleteAndGetList(Object dataMap){
         Object result = this.delete(dataMap);
@@ -47,5 +53,11 @@ public class ToyService {
         result = this.getList(dataMap);
         return result;
         // insert를 하고 나서 list를 리턴해주는 일. 
+    }
+
+    public Object updateAndGetList(Object dataMap){
+        Object result = this.update(dataMap);
+        result = this.getList(dataMap);
+        return result;
     }
 }

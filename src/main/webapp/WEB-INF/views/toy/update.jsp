@@ -4,16 +4,16 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
 <div class="container">
-<c:set var="form_action" value="insert"/>
+<c:set var="form_action" value="update"/>
 
-<%-- resultMap값이 비어있다면 insert 아니라면 update --%>
 <form action="/toy/${form_action}" method="post">
 
 <div class="form-group form-row">
+<%-- UID  --%>
 	<div class="col">
 		<label>USER_UID</label> <input class="form-control" type="text"
-			name="USER_UID" value="${resultMap.USER_UID}"
-			required ${form_action == "update" ? "readonly" : ""} />
+			name="USER_UID" value="${result.USER_UID}" 
+			required />
             <%-- 폼액션이 UPDATE라면 UID를 변경할 수 없게 READONLY로 지정하는 FUNC --%>
 	</div>
 </div>

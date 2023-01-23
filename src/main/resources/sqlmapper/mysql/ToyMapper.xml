@@ -24,4 +24,18 @@
     VALUE (#{USER_UID}, #{NAME}, #{ID}, #{PASSWORD}, #{PHONE_NUMBER}, #{BIRTHDAY}, #{EMAIL})
     </insert>
 
+
+<!-- update / call CommonCodeOur.updateByUID-->
+
+    <update id="updateByUID" parameterType="Map">
+        UPDATE USERDATA
+        SET NAME = #{NAME}, 
+        ID = #{ID}, 
+        PASSWORD = #{PASSWORD}, 
+        PHONE_NUMBER = #{PHONE_NUMBER}, 
+        BIRTHDAY = #{BIRTHDAY}, 
+        EMAIL = #{EMAIL}
+            
+        WHERE USER_UID = #{USER_UID}
+    </update>
 </mapper>

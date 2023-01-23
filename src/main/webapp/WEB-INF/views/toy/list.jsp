@@ -6,7 +6,7 @@
 
 <div class="container">
 <%-- 버튼을 누르면 form 으로 지정된 controller사용해 insert창으로 이동 --%>
-	<form action ="/toy/form" method="get"> 
+	<form action ="/toy/form_insert" method="get"> 
 		<button class="btn btn-info"
 		>회원 추가</button>
     
@@ -64,7 +64,13 @@
           ${resultData.EMAIL_AD}
 				</td>
         <td>
-        수정
+        <%-- 컨트롤러의 딜리트 펑션을 사용해 update기능 수행 --%>
+          <form action ="/toy/form_update" method="post"> 
+						<button class="btn outline-info"
+						>Update</button>
+					</form>
+        
+	</form>
 				</td>
         <td>
           <%-- 컨트롤러의 딜리트 펑션을 사용해 delete기능 수행 --%>

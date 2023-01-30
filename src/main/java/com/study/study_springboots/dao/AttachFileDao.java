@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 // @Repository
 @Component
-public class CommonCodeOurDao {
+public class AttachFileDao {
     @Autowired  //mapper와 연결할 준비가 됨.
     private SqlSessionTemplate sqlSessionTemplate;
 

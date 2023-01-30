@@ -7,6 +7,18 @@
     parameterType="Map" resultType="Map">
         SELECT * 
         FROM CIP_COMMON_CODE
+        <!-- where ORDER_NUMBER > 3   -->
+        <!-- <, >  가능  예전 버전에서는 에러가 발생했지만 이제는 가능해짐.-->
+        <!-- <![CDATA[ > ]]> 3    이전 버전에서는 이렇게 사용했어야 함.  
+        [] 내부의 내용을  STRING로 인식하게 됨. WHERE절 전체를 감싸도 됨.-->
+        <!-- 페이지스케일이 있을 때 들어와야함.  if 사용 -->
+        <if test="pageScale !=null">
+          ORDER BY COMMON_CODE_ID
+          <!-- 첫번째리스트 -->
+          <!-- LIMIT 1, 10 -->
+          LIMIT #{currentPage}, #{pageScale}
+          <!-- 이대로면 string 로 들어가서 에러가 발생함. int형으로 바꿔줘야 한다. 컨트롤러에서 수정!! -->
+        </if>
     </select>
 
 <!-- call CommonCodeOur.selectByUID-->
@@ -33,30 +45,52 @@
         WHERE COMMON_CODE_ID = #{COMMON_CODE_ID}
     </delete>
 
-    <!-- insert / call CommonCodeOur.insertWithUID-->
-   <insert id="insertWithUID" parameterType="Map">
-    insert into CIP_COMMON_CODE 
-        (COMMON_CODE_ID,NAME,ORDER_NUMBER,ATTRIBUTION_1,ATTRIBUTION_2,DESCRIPTION,
-        SYSTEM_CODE_YN,USE_YN,PARENT_COMMON_CODE_ID,REGISTER_SEQ,REGISTRY_DATE,MODIFIER_SEQ,MODIFY_DATE) 
-    VALUE (#{COMMON_CODE_ID},#{NAME},#{ORDER_NUMBER},NULL,NULL,#{DESCRIPTION}
-        <choose>
-            <when test="SYSTEM_CODE_YN != null">
-                , 'Yes'
-            </when>
-            <otherwise>
-                ,'No'
-            </otherwise>
-        </choose>
-        <choose>
-            <when test="USE_YN != null">
-                , 'Yes'
-            </when>
-            <otherwise>
-                ,'No'
-            </otherwise>
-        </choose>
-        ,NULL,#{REGISTER_SEQ},sysdate(),#{MODIFIER_SEQ},sysdate())
+
+
+    <!-- call CommonCodeOur.insertWithUID -->
+    <insert id="insertWithUID" parameterType="Map">
+        insert into CIP_COMMON_CODE 
+            (COMMON_CODE_ID,NAME,ORDER_NUMBER,ATTRIBUTION_1,ATTRIBUTION_2,DESCRIPTION,
+            SYSTEM_CODE_YN,USE_YN,PARENT_COMMON_CODE_ID,REGISTER_SEQ,REGISTRY_DATE,MODIFY_DATE,MODIFIER_SEQ) 
+        VALUE 
+        <trim prefix="(" suffix=")" suffixOverrides=",">  
+        <!-- suffixOverrides 는 =""를 없애주세요 라는 뜻-->
+            #{COMMON_CODE_ID},#{NAME},#{ORDER_NUMBER},NULL,NULL,#{DESCRIPTION}
+            <choose>
+                <when test="SYSTEM_CODE_YN != null">
+                    , 'Yes'
+                </when>
+                <otherwise>
+                    ,'No'
+                </otherwise>
+            </choose>
+            <choose>
+                <when test="USE_YN != null">
+                    , 'Yes'
+                </when>
+                <otherwise>
+                    ,'No'
+                </otherwise>
+            </choose>
+            ,NULL,#{REGISTER_SEQ},sysdate(),sysdate(),
+            <if test="MODIFIER_SEQ != null">
+            #{MODIFIER_SEQ},
+            </if>
+        </trim>
     </insert>
+
+<!-- call CommonCodeOur.deleteMultiByUID-->
+    <delete id="deleteMultiByUIDs" parameterType="Map">
+        DELETE FROM CIP_COMMON_CODE
+        WHERE COMMON_CODE_ID IN 
+        <!-- ( 괄호를 지우고 open close추가 -->
+             <foreach collection="deleteMultis" item="item" open="(" separator="," close=")">  <!-- params에서 넘어오는 키가 collection부분 item은 내부 변수-->
+            <!-- 'System_Code_No', 'System_Code_Yes' 내부 변수만 유동적으로 바꿔보기-->
+                #{item}  <!-- 리스트로 넘어오니까 이대로 사용  map으로 넘어온다면 #{item.@@}-->        
+<!-- item이 foreach를 만나서 각각의 row로 풀림.  mybatis foreach에서 separator을 넣어준다면 출력값들 사이에 ,를 넣어줄 수 있음. -->
+            </foreach>
+            <!-- ) -->
+    </delete>
 
 
 </mapper>

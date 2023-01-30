@@ -19,6 +19,8 @@
     <div> <a href="/toy/list">/toy_list</a> </div>
     <div> <a href="./toy/list.jsp">/list</a> </div>
     <div> <a href="./commonCode_our/list.jsp">c_list</a> </div>
+    <div> <a href="./commonCode_our/list_pagination.jsp">리스트 페이지 // list_pagination</a> </div>
+    <div> <a href="/commonCodeOur/listPagination/1">list_pagination  mapping link</a> </div>
     
     
 </body>

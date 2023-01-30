@@ -1,5 +1,8 @@
 package com.study.study_springboots.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,8 @@ import com.study.study_springboots.dao.CommonCodeOurDao;
 public class CommonCodeOurService {
     @Autowired
     CommonCodeOurDao commonCodeOurDao;
+    @Autowired
+    AttachFileService attachFileService;
 
     public Object getList(Object dataMap){
         String sqlMapId = "CommonCodeOur.selectListByUID"; //mapper의 {namespace}.{id}
@@ -60,4 +65,33 @@ public class CommonCodeOurService {
         result = this.getList(dataMap);
         return result;
     }
+
+    public Object deleteMulti(Object dataMap){
+        String sqlMapId = "CommonCodeOur.deleteMultiByUIDs";
+        Object result = commonCodeOurDao.delete(sqlMapId, dataMap);
+        return result;
+    }
+
+    public Object insertWithFilesAndGetList(Object dataMap){
+        // insert files 
+        Object result = attachFileService.insertMulti(dataMap);
+
+        result = this.insert(dataMap);
+        result = this.getList(dataMap);
+        return result;
+    }
+
+    public Object getOneWithAttachFiles(Object dataMap){
+        // Attach files ArrayList<Map>
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("attachFiles", attachFileService.getList(dataMap));
+    
+        // 기존 값 보존 위해 사용
+        result.putAll((Map<String, Object>)this.getOne(dataMap));
+        // getOne에서 넘어온 성격은 Object고 map이다   .putAll == 키가 같으면 덮어써지고 아니면 ??  ,  cast해줘야함.
+        // 결론 : 원하는것을 한번에 다 묶어서 넘길 수 있음.
+        return result;
+    }
+
 }
+

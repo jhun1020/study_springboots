@@ -30,6 +30,13 @@
     <!-- #{}에 파라미터타입으로 받은map이 들어갈 것 -->
     </select>
 
+    <!-- call CommonCodeOur.selectTotal-->
+    <select id="selectTotal"  
+    parameterType="Map" resultType="Map">
+        SELECT count(*) as cnt
+        FROM CIP_COMMON_CODE
+    </select>
+
 <!-- update / call CommonCodeOur.updateByUID-->
 <!-- 업데이트는 resultSet이 없다. -->
     <update id="updateByUID" parameterType="Map">

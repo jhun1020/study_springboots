@@ -23,7 +23,7 @@
 
 <%-- Pagination --%>
 <nav aria-label="Page navigation example">
-  <span>총 개수 : </span>
+  <span>총 개수 : ${resultMap.total}</span>
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -58,7 +58,9 @@
 	</thead>
 	<tbody>
 	<%-- row단위로 나온다는데 ??? --%>
-		<c:forEach items="${resultMap}" var="resultData" varStatus="loop">
+	<%-- resultMap에 현재 total과 resultList가 들어 있음.  그래서 resultMap을 그대로 뽑으면 안되고
+	여기서는 resultMap.resultList라고 키를 넣어서 list만 뽑아 줘야한다. --%>
+		<c:forEach items="${resultMap.resultList}" var="resultData" varStatus="loop">
 			<tr>
 				<td class="text-center"><input type="checkbox" class="checkbox"
 					name="COMMONCODE_ID" value="${resultData.COMMON_CODE_ID}" /></td>

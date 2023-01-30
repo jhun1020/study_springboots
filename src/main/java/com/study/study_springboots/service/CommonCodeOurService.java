@@ -15,6 +15,19 @@ public class CommonCodeOurService {
     @Autowired
     AttachFileService attachFileService;
 
+    public Object getListWithPagination(Object dataMap){
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("total", this.getTotal(dataMap));
+        result.put("resultList", this.getList(dataMap));
+        return result;
+    }
+
+    public Object getTotal(Object dataMap){
+        String sqlMapId = "CommonCodeOur.selectTotal";
+        Object result = commonCodeOurDao.getOne(sqlMapId, dataMap);
+        return result;
+    }
+
     public Object getList(Object dataMap){
         String sqlMapId = "CommonCodeOur.selectListByUID"; //mapper의 {namespace}.{id}
         Object result = commonCodeOurDao.getList(sqlMapId, dataMap);

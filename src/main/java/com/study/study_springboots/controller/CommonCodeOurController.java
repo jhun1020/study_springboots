@@ -74,7 +74,7 @@ public class CommonCodeOurController {
         // 페이지스케일
         params.put("currentPage", Integer.parseInt(currentPage));
         params.put("pageScale", 10);
-        Object resultMap = commonCodeOurService.getList(params);
+        Object resultMap = commonCodeOurService.getListWithPagination(params);
         modelAndView.addObject("resultMap", resultMap);
         modelAndView.setViewName("commonCode_our/list_pagination");
         return modelAndView;

@@ -1,9 +1,13 @@
 package com.study.study_springboots.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.study.study_springboots.dao.ToyDao;
+import com.study.study_springboots.utils.Paginations;
 
 
 @Service
@@ -14,6 +18,22 @@ public class ToyService {
 
     public Object getList(Object dataMap){
         String sqlMapId = "Toy.selectFromUserdataByUSER_UID";  //mapper의 {namespace}.{id}
+        Object result = toyDao.getList(sqlMapId, dataMap);
+        return result;
+    }
+    public Object getListWithPagination(Object dataMap){
+        Map<String, Object> result = new HashMap<String, Object>();
+        int totalCount = (int)this.getTotal(dataMap);
+        int currentPage = (int)((Map<String, Object>) dataMap).get("currentPage");
+        Paginations paginations = new Paginations(totalCount, currentPage);
+        ((Map<String, Object>) dataMap).put("pageBegin", paginations.getPageBegin());
+        result.put("paginations", paginations);
+        result.put("resultList", this.getList(dataMap));
+        return result;
+    }
+
+    public Object getTotal(Object dataMap){
+        String sqlMapId = "Toy.selectTotal";   //매버 아직 안만들었따.
         Object result = toyDao.getList(sqlMapId, dataMap);
         return result;
     }

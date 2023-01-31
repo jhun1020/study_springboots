@@ -6,11 +6,36 @@
 
 <div class="container">
 <%-- 버튼을 누르면 form 으로 지정된 controller사용해 insert창으로 이동 --%>
-	<form action ="/toy/form_insert" method="get"> 
+	<form action ="/toy/insert" method="get"> 
 		<button class="btn btn-info"
 		>회원 추가</button>
     
 	</form>
+<%-- Pagination  --%>
+<nav area-label="Page navigation example">
+<c:set var="_pagination" value="${resultMap.paginations}" />
+<span>총 : ${_pagination.totalCount}</span>
+<ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+	<%-- for(i=1; i>?; i++)    forEach 안에서 var="i"로 선언 --%>
+	<c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
+    <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/${i}">${i}</a></li>
+	</c:forEach>
+
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
 <table class="table table-striped table-hover table-bordered">
 	<thead>

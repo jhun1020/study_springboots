@@ -23,7 +23,9 @@
 
 <%-- Pagination --%>
 <nav aria-label="Page navigation example">
-  <span>총 개수 : ${resultMap.total}</span>
+  <c:set var="_pagination" value="${resultMap.paginations}" />
+  <%-- <span>총 개수 : ${resultMap.paginations.totalCount}</span> --%>
+  <span>총 개수 : ${_pagination.totalCount}</span>
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -31,9 +33,15 @@
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/1">1</a></li>
+	<%-- for(i=1; i>?; i++)    forEach 안에서 i로 선언 == var--%>
+	<c:forEach var="i" begin="${_pagination.blockStart}" end="${_pagination.blockEnd}">
+    <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/${i}">${i}</a></li>
+	</c:forEach>
+	<%-- 이걸  forEach 사용해서 하는걸 위에 했다.  --%>
+	<%-- <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/1">1</a></li>
     <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/11">2</a></li>
-    <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/21">3</a></li>
+    <li class="page-item"><a class="page-link" href="/commonCodeOur/listPagination/21">3</a></li> --%>
+
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>

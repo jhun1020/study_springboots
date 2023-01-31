@@ -7,7 +7,17 @@
     parameterType="Map" resultType="Map">
         SELECT * 
         FROM userdata
+        <if test="pageScale !=null">
+        LIMIT #{pageBegin}, #{pageScale}
+        </if>
         <!-- WHERE QUESTIONS_UID = #{QUESTION_UID} -->
+    </select>
+
+    <!-- call CommonCodeOur.selectTotal-->
+    <select id="selectTotal"  
+    parameterType="Map" resultType="int">
+        SELECT count(*) as cnt
+        FROM userdata
     </select>
 
     <!-- delete / call Toy.deleteByUID-->

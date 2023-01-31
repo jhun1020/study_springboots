@@ -16,7 +16,8 @@
           ORDER BY COMMON_CODE_ID
           <!-- 첫번째리스트 -->
           <!-- LIMIT 1, 10 -->
-          LIMIT #{currentPage}, #{pageScale}
+          <!-- LIMIT #{currentPage}, #{pageScale} -->
+          LIMIT #{pageBegin}, #{pageScale}
           <!-- 이대로면 string 로 들어가서 에러가 발생함. int형으로 바꿔줘야 한다. 컨트롤러에서 수정!! -->
         </if>
     </select>
@@ -32,7 +33,7 @@
 
     <!-- call CommonCodeOur.selectTotal-->
     <select id="selectTotal"  
-    parameterType="Map" resultType="Map">
+    parameterType="Map" resultType="int">
         SELECT count(*) as cnt
         FROM CIP_COMMON_CODE
     </select>

@@ -36,6 +36,16 @@ public class ToyController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/listPagination/{currentPage}"}, method = RequestMethod.GET)
+    public ModelAndView listPagination(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView, String currentPage){
+        params.put("currentPage", Integer.parseInt(currentPage));
+        params.put("pageScale", 2);
+        Object resultMap = toyService.getListWithPagination(params);
+        modelAndView.addObject("resultMap", resultMap);
+        modelAndView.setViewName("toy/list_pagination");
+        return modelAndView;
+    }
+
     @RequestMapping(value="/delete/{uniqueId}", method = RequestMethod.POST)  
     public ModelAndView delete(@RequestParam Map<String, Object> params, @PathVariable String uniqueId, ModelAndView modelAndView){
         // POST로 받아온 값을 params에 user_uid로 지정해 put하고
@@ -76,6 +86,8 @@ public class ToyController {
         modelAndView.setViewName("toy/list");
         return modelAndView;
     }
+
+
 
 }
 

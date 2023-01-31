@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.study.study_springboots.dao.CommonCodeOurDao;
+import com.study.study_springboots.utils.Paginations;
 
 @Service
 public class CommonCodeOurService {
@@ -17,7 +18,11 @@ public class CommonCodeOurService {
 
     public Object getListWithPagination(Object dataMap){
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("total", this.getTotal(dataMap));
+        int totalCount = (int) this.getTotal(dataMap);  // 오브젝트형이기 떄문에 int로 cast
+        int currentPage = (int) ((Map<String, Object>) dataMap).get("currentPage"); //dataMap가 오브젝트로 넘어와서 맵으로 캐스트 해주고 맵으로 바꿔준것에서 get.currentPage를 int로 cast해서 cast가 두번 필요
+        Paginations paginations = new Paginations(totalCount, currentPage);
+        ((Map<String, Object>) dataMap).put("pageBegin",paginations.getPageBegin());
+        result.put("paginations", paginations);
         result.put("resultList", this.getList(dataMap));
         return result;
     }

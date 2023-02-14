@@ -21,9 +21,12 @@
           google.charts.load("current", { packages: ["corechart"] });
           google.charts.setOnLoadCallback(drawChart);
 
+          // let tempdata = ${};  일단 이건 나중에
+
           function drawChart() {
             var data = google.visualization.arrayToDataTable([
               ["Age", "Weight"],
+              // 일단 임의적 세팅값으로 사용
               [8, 12],
               [4, 5.5],
               [11, 14],
@@ -53,7 +56,7 @@
           }
 
           .vh-50 {
-            height: 50vh;
+            height: 50vh;   
           }
         </style>
       </head>

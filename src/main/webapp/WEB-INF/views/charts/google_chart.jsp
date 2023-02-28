@@ -69,7 +69,6 @@
 <body>
     <div class="container">
         <div class="row vh-50">
-         <!-- vh  디바이스용 디바이스의 원래 사이즈를 알 수 있따.  디바이스의 50% 사용 -->
             <div class="col-5" id="chart_div">
             </div>
             <div class="col-7">Aside left</div>

@@ -3,7 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+<%-- 0220 추가 코드 --%>
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+
+
 <div class="container">
+
+
+
 <c:set var="form_action" value="update"/>
 <c:if test="${empty resultMap}"> 
 <%-- 조건 : resultMap이 비어있다면  --%>
@@ -13,7 +21,7 @@
 
 
 <%-- resultMap값이 비어있다면 insert 아니라면 update --%>
-<form action="/commonCodeOur/${form_action}" method="post" enctype = “multipart/form-data”>
+<form id="action-form" action="/commonCodeOur/${form_action}" method="post" enctype = “multipart/form-data”>
 >
 <input type="hidden" name="REGISTER_SEQ" value="UUID-1111-1111111" >
 <input type="hidden" name="MODIFIER_SEQ" value="UUID-1111-1111111" >
@@ -70,10 +78,16 @@
 	</div>
 </div>
 <div class="form-group form-row">
+
 	<div class="col">
 		<label>설명 <span class="text-muted">(<spring:message
 					code="text.option" />)
+					
 		</span></label>
+
+		<%-- 0220 추가 --%>
+		<div id="editor"></div>
+
 		<textarea class="form-control" rows="3" name="DESCRIPTION"
 			placeholder=""
 			${statusDisabled}>${resultMap.DESCRIPTION }</textarea>
@@ -101,7 +115,7 @@
 </div>
 <div class="row justify-content-between">
 	<div class="col">
-		<button class="btn btn-primary"
+		<button class="btn btn-primary" id="submit-button"
 			> ${form_action}
 		</button>
 
@@ -114,6 +128,21 @@
 			
 		</button> --%>
 	</div>
+
+	<%-- 0220 추가 --%>
+	<script>
+		var editor = new Quill('#editor', {
+  		theme: 'snow'
+		});
+
+		let submitButton = document.querySelector('#submit-button');
+		submitButton.addEventListener("click", function (event){
+			let form = document.querySelector("#action-form");
+			form.submit();
+
+		});
+	</script>
+
 </div>
 </form>
 </div>
